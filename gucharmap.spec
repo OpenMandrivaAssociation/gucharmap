@@ -1,17 +1,18 @@
 %define major 6
 %define libname %mklibname %name %major
+%define develname %mklibname -d %name
 
 Summary: 	A Unicode character map and font viewer
 Name: 		gucharmap
 Version: 1.10.0
-Release: 	%mkrel 1
+Release: 	%mkrel 2
 License: 	GPL
 Group: 		Publishing
 Source0: 	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 Source1: 	%{name}48.png
 Source2: 	%{name}32.png
 Source3: 	%{name}16.png
-
+Patch: gucharmap-1.10.0-desktopfile.patch
 URL: 		http://gucharmap.sourceforge.net/
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires: 	libgnomeui2-devel >= 2.5.90.1
@@ -36,21 +37,22 @@ Group: System/Libraries
 This package contains the library needed to run programs dynamically
 linked with gucharmap.
 
-%package -n %libname-devel
+%package -n %develname
 Summary: Headers for developing programs that will use gucharmap
 Group: Development/GNOME and GTK+
 Requires: %libname = %{version}
 Provides: lib%name-devel = %{version}-%{release}
 Provides: %name-devel = %{version}-%{release}
 Requires: libgnomeui2-devel
+Obsoletes: %mklibname -d %name 6
 
-%description -n %libname-devel
+%description -n %develname
 This package contains the headers that programmers will need to develop
 applications which will use gucharmap.
 
 %prep
 %setup -q
-touch *
+%patch -p1
 
 %build
 
@@ -122,7 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr (-,root,root)
 %_libdir/libgucharmap.so.%{major}*
 
-%files -n %libname-devel
+%files -n %develname
 %defattr (-,root,root)
 %_libdir/*.so
 %attr(644,root,root) %_libdir/*.la
