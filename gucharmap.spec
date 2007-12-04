@@ -4,7 +4,7 @@
 
 Summary: 	A Unicode character map and font viewer
 Name: 		gucharmap
-Version: 1.10.1
+Version: 2.21.3
 Release: 	%mkrel 1
 License: 	GPL
 Group: 		Publishing
@@ -96,6 +96,11 @@ done
 %post
 %update_scrollkeeper
 %update_menus
+%define schemas %name.schemas
+%post_install_gconf_schemas %schemas
+
+%preun
+%preun_uninstall_gconf_schemas %schemas
  
 %postun
 %clean_scrollkeeper
@@ -110,6 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr (-,root,root)
 %doc ChangeLog README TODO
+%_sysconfdir/gconf/schemas/%name.schemas
 %{_bindir}/*
 %{_menudir}/*
 %{_datadir}/applications/*
