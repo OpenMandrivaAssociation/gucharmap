@@ -20,7 +20,6 @@ BuildRequires:	scrollkeeper
 BuildRequires:	gnome-doc-utils >= 0.3.2
 BuildRequires:	libxslt-proc
 BuildRequires:	perl-XML-Parser
-BuildRequires:	desktop-file-utils
 Requires(post):		scrollkeeper
 Requires(postun):		scrollkeeper
 
@@ -64,22 +63,6 @@ rm -rf $RPM_BUILD_ROOT %name.lang
 
 %makeinstall_std
 
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}):\
-command="%{_bindir}/gucharmap" \
-title="Unicode Character Map" \
-longtitle="Unicode Character Map" \
-needs="x11" \
-icon="gucharmap.png" \
-section="Office/Accessories" xdg="true"
-EOF
-desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --add-category="X-MandrivaLinux-Office-Accessories" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
-
-
 #icons
 mkdir -p $RPM_BUILD_ROOT/%_liconsdir
 cat %SOURCE1 > $RPM_BUILD_ROOT/%_liconsdir/%name.png
@@ -117,7 +100,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog README TODO
 %_sysconfdir/gconf/schemas/%name.schemas
 %{_bindir}/*
-%{_menudir}/*
 %{_datadir}/applications/*
 %_datadir/icons/hicolor/48x48/apps/%name.png
 %{_liconsdir}/%name.png
@@ -136,5 +118,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644,root,root) %_libdir/*.la
 %_libdir/pkgconfig/*
 %_includedir/*
-
-
