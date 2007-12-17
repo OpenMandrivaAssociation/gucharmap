@@ -14,7 +14,6 @@ Source2: 	%{name}32.png
 Source3: 	%{name}16.png
 Patch: gucharmap-1.10.0-desktopfile.patch
 URL: 		http://gucharmap.sourceforge.net/
-BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires: 	libgnomeui2-devel >= 2.5.90.1
 BuildRequires:	scrollkeeper
 BuildRequires:	gnome-doc-utils >= 0.3.2
