@@ -4,7 +4,7 @@
 
 Summary: 	A Unicode character map and font viewer
 Name: 		gucharmap
-Version: 2.21.5
+Version: 2.21.90
 Release: 	%mkrel 1
 License: 	GPL
 Group: 		Publishing
@@ -12,7 +12,6 @@ Source0: 	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.
 Source1: 	%{name}48.png
 Source2: 	%{name}32.png
 Source3: 	%{name}16.png
-Patch: gucharmap-1.10.0-desktopfile.patch
 URL: 		http://gucharmap.sourceforge.net/
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires: 	libgnomeui2-devel >= 2.5.90.1
@@ -51,7 +50,6 @@ applications which will use gucharmap.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
 
