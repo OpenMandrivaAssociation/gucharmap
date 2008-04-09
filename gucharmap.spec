@@ -4,7 +4,7 @@
 
 Summary: 	A Unicode character map and font viewer
 Name: 		gucharmap
-Version: 2.22.0
+Version: 2.22.1
 Release: 	%mkrel 1
 License: 	GPL
 Group: 		Publishing
