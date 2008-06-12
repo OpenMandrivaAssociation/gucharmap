@@ -75,17 +75,23 @@ echo "%lang($(basename $omf|sed -e s/%name-// -e s/.omf//)) $(echo $omf|sed -e s
 done
 
 %post
+%if %mdkversion < 200900
 %update_scrollkeeper
 %update_menus
+%endif
 %define schemas %name
+%if %mdkversion < 200900
 %post_install_gconf_schemas %schemas
+%endif
 
 %preun
 %preun_uninstall_gconf_schemas %schemas
  
+%if %mdkversion < 200900
 %postun
 %clean_scrollkeeper
 %clean_menus
+%endif
 
 %if %mdkversion < 200900
 %post -n %libname -p /sbin/ldconfig
