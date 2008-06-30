@@ -4,7 +4,7 @@
 
 Summary: 	A Unicode character map and font viewer
 Name: 		gucharmap
-Version: 2.22.1
+Version: 2.22.3
 Release: 	%mkrel 1
 License: 	GPL
 Group: 		Publishing
@@ -18,7 +18,7 @@ BuildRequires: 	libgnomeui2-devel >= 2.5.90.1
 BuildRequires:	scrollkeeper
 BuildRequires:	gnome-doc-utils >= 0.3.2
 BuildRequires:	libxslt-proc
-BuildRequires:	perl-XML-Parser
+BuildRequires:	intltool
 Requires(post):		scrollkeeper
 Requires(postun):		scrollkeeper
 
