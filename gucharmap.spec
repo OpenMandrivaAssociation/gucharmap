@@ -109,7 +109,6 @@ rm -rf $RPM_BUILD_ROOT
 %_sysconfdir/gconf/schemas/%name.schemas
 %{_bindir}/*
 %{_datadir}/applications/*
-%_datadir/icons/hicolor/48x48/apps/%name.png
 %{_liconsdir}/%name.png
 %{_iconsdir}/%name.png
 %{_miconsdir}/%name.png
