@@ -1,12 +1,12 @@
-%define major 6
+%define major 7
 %define libname %mklibname %name %major
 %define develname %mklibname -d %name
 
 Summary: 	A Unicode character map and font viewer
 Name: 		gucharmap
-Version: 2.22.3
+Version: 2.23.4
 Release: 	%mkrel 1
-License: 	GPL
+License: 	GPLv2+
 Group: 		Publishing
 Source0: 	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 Source1: 	%{name}48.png
