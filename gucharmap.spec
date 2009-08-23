@@ -4,11 +4,11 @@
 
 Summary: 	A Unicode character map and font viewer
 Name: 		gucharmap
-Version: 2.26.3.1
+Version: 2.27.0
 Release: 	%mkrel 1
 License: 	GPLv2+
 Group: 		Publishing
-Source0: 	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Source0: 	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}-git.tar.bz2
 Source1: 	%{name}48.png
 Source2: 	%{name}32.png
 Source3: 	%{name}16.png
@@ -49,7 +49,7 @@ This package contains the headers that programmers will need to develop
 applications which will use gucharmap.
 
 %prep
-%setup -q
+%setup -q -n %name-%version-git
 
 %build
 
