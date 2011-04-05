@@ -4,7 +4,7 @@
 
 Summary: 	A Unicode character map and font viewer
 Name: 		gucharmap
-Version: 2.32.1
+Version:	3.0.0
 Release: 	%mkrel 1
 License: 	GPLv2+
 Group: 		Publishing
@@ -14,13 +14,12 @@ Source2: 	%{name}32.png
 Source3: 	%{name}16.png
 URL: 		http://gucharmap.sourceforge.net/
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
-BuildRequires: 	libgnomeui2-devel >= 2.5.90.1
+BuildRequires: 	gtk+2-devel
+BuildRequires:	libGConf2-devel
 BuildRequires:	scrollkeeper
 BuildRequires:	gnome-doc-utils >= 0.3.2
 BuildRequires:	libxslt-proc
 BuildRequires:	intltool
-Requires(post):		scrollkeeper
-Requires(postun):		scrollkeeper
 
 %description
 gucharmap is a Unicode/ISO 10646 character map and font viewer. It
@@ -52,8 +51,7 @@ applications which will use gucharmap.
 %setup -q
 
 %build
-
-%configure2_5x --enable-gnome --disable-scrollkeeper
+%configure2_5x --enable-gnome --disable-scrollkeeper --with-gtk=2.0
 %make
 
 %install
@@ -70,36 +68,14 @@ mkdir -p $RPM_BUILD_ROOT/%_miconsdir
 cat %SOURCE3 > $RPM_BUILD_ROOT/%_miconsdir/%name.png
 
 %{find_lang} %{name} --with-gnome
+
 for omf in %buildroot%_datadir/omf/%name/%name-??*.omf;do 
 echo "%lang($(basename $omf|sed -e s/%name-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name.lang
 done
 
-%post
-%if %mdkversion < 200900
-%update_scrollkeeper
-%update_menus
-%endif
-%define schemas %name
-%if %mdkversion < 200900
-%post_install_gconf_schemas %schemas
-%endif
-
 %preun
-%preun_uninstall_gconf_schemas %schemas
+%preun_uninstall_gconf_schemas %name
  
-%if %mdkversion < 200900
-%postun
-%clean_scrollkeeper
-%clean_menus
-%endif
-
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
