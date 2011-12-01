@@ -55,17 +55,17 @@ applications which will use gucharmap.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT %name.lang
+rm -rf %{buildroot} %name.lang
 
 %makeinstall_std
 
 #icons
-mkdir -p $RPM_BUILD_ROOT/%_liconsdir
-cat %SOURCE1 > $RPM_BUILD_ROOT/%_liconsdir/%name.png
-mkdir -p $RPM_BUILD_ROOT/%_iconsdir
-cat %SOURCE2 > $RPM_BUILD_ROOT/%_iconsdir/%name.png
-mkdir -p $RPM_BUILD_ROOT/%_miconsdir
-cat %SOURCE3 > $RPM_BUILD_ROOT/%_miconsdir/%name.png
+mkdir -p %{buildroot}/%_liconsdir
+cat %SOURCE1 > %{buildroot}/%_liconsdir/%name.png
+mkdir -p %{buildroot}/%_iconsdir
+cat %SOURCE2 > %{buildroot}/%_iconsdir/%name.png
+mkdir -p %{buildroot}/%_miconsdir
+cat %SOURCE3 > %{buildroot}/%_miconsdir/%name.png
 
 %{find_lang} %{name} --with-gnome
 
@@ -77,7 +77,7 @@ done
 %preun_uninstall_gconf_schemas %name
  
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr (-,root,root)
