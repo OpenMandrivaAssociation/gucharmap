@@ -5,7 +5,7 @@
 Summary: 	A Unicode character map and font viewer
 Name: 		gucharmap
 Version:	3.0.1
-Release: 	%mkrel 3
+Release: 	%mkrel 4
 License: 	GPLv2+
 Group: 		Publishing
 Source0: 	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -13,7 +13,6 @@ Source1: 	%{name}48.png
 Source2: 	%{name}32.png
 Source3: 	%{name}16.png
 URL: 		http://gucharmap.sourceforge.net/
-BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires: 	gtk+2-devel
 BuildRequires:	libGConf2-devel
 BuildRequires:	scrollkeeper
@@ -69,16 +68,9 @@ cat %SOURCE3 > %{buildroot}/%_miconsdir/%name.png
 
 %{find_lang} %{name} --with-gnome
 
-for omf in %buildroot%_datadir/omf/%name/%name-??*.omf;do 
-echo "%lang($(basename $omf|sed -e s/%name-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name.lang
-done
-
 %preun
 %preun_uninstall_gconf_schemas %name
  
-%clean
-rm -rf %{buildroot}
-
 %files -f %{name}.lang
 %defattr (-,root,root)
 %doc README TODO
@@ -88,8 +80,6 @@ rm -rf %{buildroot}
 %{_liconsdir}/%name.png
 %{_iconsdir}/%name.png
 %{_miconsdir}/%name.png
-%dir %{_datadir}/omf/%{name}
-%{_datadir}/omf/gucharmap/gucharmap-C.omf
 
 %files -n %libname
 %defattr (-,root,root)
@@ -98,6 +88,5 @@ rm -rf %{buildroot}
 %files -n %develname
 %defattr (-,root,root)
 %_libdir/*.so
-%attr(644,root,root) %_libdir/*.la
 %_libdir/pkgconfig/*
 %_includedir/*
