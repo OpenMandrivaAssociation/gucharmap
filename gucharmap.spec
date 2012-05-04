@@ -7,7 +7,7 @@
 
 Summary: 	A Unicode character map and font viewer
 Name: 		gucharmap
-Version:	3.2.2
+Version:	3.4.1
 Release: 	1
 License: 	GPLv2+
 Group: 		Publishing
@@ -72,8 +72,8 @@ rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %doc README TODO
-%{_sysconfdir}/gconf/schemas/%{name}.schemas
 %{_bindir}/*
+%{_datadir}/glib-2.0/schemas/
 %{_datadir}/applications/*
 
 %files -n %{libname}
