@@ -1,26 +1,24 @@
 %define api	2_90
-%define major 7
+%define major	7
 %define gir_major	2.90
 %define libname		%mklibname %{name} %{api} %{major}
 %define develname	%mklibname -d %{name}
 %define girname		%mklibname %{name}-gir %{gir_major}
 
-Summary: 	A Unicode character map and font viewer
-Name: 		gucharmap
-Version:	3.4.1.1
-Release: 	1
-License: 	GPLv2+
-Group: 		Publishing
-URL: 		http://gucharmap.sourceforge.net/
-Source0: 	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
-
-BuildRequires:	intltool
+Summary:	A Unicode character map and font viewer
+Name:		gucharmap
+Version:	3.6.1
+Release:	1
+License:	GPLv2+
+Group:		Publishing
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/3.6/%{name}-%{version}.tar.xz
+URL:		http://gucharmap.sourceforge.net/
+BuildRequires:	pkgconfig(gnome-doc-utils)
+BuildRequires:	intltool, itstool
 BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gconf-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gnome-doc-utils)
-BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 
 %description
@@ -39,6 +37,7 @@ linked with gucharmap.
 %package -n %{girname}
 Summary:	GObject Introspection interface description for %{name}
 Group:		System/Libraries
+Requires:	%{libname} = %{version}-%{release}
 
 %description -n %{girname}
 GObject Introspection interface description for %{name}.
@@ -46,8 +45,7 @@ GObject Introspection interface description for %{name}.
 %package -n %{develname}
 Summary:	Headers for developing programs that will use gucharmap
 Group:		Development/GNOME and GTK+
-Requires:	%{libname} = %{version}
-Requires:	%{girname} = %{version}
+Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n %{develname}
@@ -88,4 +86,3 @@ applications which will use gucharmap.
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_datadir}/gir-1.0/Gucharmap-%{gir_major}.gir
-
