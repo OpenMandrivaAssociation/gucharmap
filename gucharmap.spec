@@ -1,9 +1,11 @@
+%define url_ver %(echo %{version}|cut -d. -f1,2)
+
 %define api	2_90
 %define major	7
-%define gir_major	2.90
-%define libname		%mklibname %{name} %{api} %{major}
-%define develname	%mklibname -d %{name}
-%define girname		%mklibname %{name}-gir %{gir_major}
+%define gimajor	2.90
+%define libname	%mklibname %{name} %{api} %{major}
+%define girname	%mklibname %{name}-gir %{gimajor}
+%define devname	%mklibname -d %{name}
 
 Summary:	A Unicode character map and font viewer
 Name:		gucharmap
@@ -11,14 +13,16 @@ Version:	3.6.1
 Release:	1
 License:	GPLv2+
 Group:		Publishing
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/3.6/%{name}-%{version}.tar.xz
-URL:		http://gucharmap.sourceforge.net/
-BuildRequires:	pkgconfig(gnome-doc-utils)
-BuildRequires:	intltool, itstool
+Url:		http://gucharmap.sourceforge.net/
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gucharmap/%{url_ver}/%{name}-%{version}.tar.xz
+
+BuildRequires:	intltool
+BuildRequires:	itstool
 BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gconf-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gtk+-3.0)
 
 %description
@@ -42,13 +46,13 @@ Requires:	%{libname} = %{version}-%{release}
 %description -n %{girname}
 GObject Introspection interface description for %{name}.
 
-%package -n %{develname}
+%package -n %{devname}
 Summary:	Headers for developing programs that will use gucharmap
 Group:		Development/GNOME and GTK+
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
-%description -n %{develname}
+%description -n %{devname}
 This package contains the headers that programmers will need to develop
 applications which will use gucharmap.
 
@@ -66,7 +70,6 @@ applications which will use gucharmap.
 
 %install
 %makeinstall_std
-
 %find_lang %{name} --with-gnome
 
 %files -f %{name}.lang
@@ -79,10 +82,10 @@ applications which will use gucharmap.
 %{_libdir}/libgucharmap_%{api}.so.%{major}*
 
 %files -n %{girname}
-%{_libdir}/girepository-1.0/Gucharmap-%{gir_major}.typelib
+%{_libdir}/girepository-1.0/Gucharmap-%{gimajor}.typelib
 
-%files -n %{develname}
+%files -n %{devname}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
-%{_datadir}/gir-1.0/Gucharmap-%{gir_major}.gir
+%{_datadir}/gir-1.0/Gucharmap-%{gimajor}.gir
