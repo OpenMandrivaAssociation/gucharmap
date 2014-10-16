@@ -19,6 +19,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gucharmap/%{url_ver}/%{name}-%{v
 BuildRequires:	intltool
 BuildRequires:	itstool
 BuildRequires:	xsltproc
+BuildRequires:	appdata-tools
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gnome-doc-utils)
