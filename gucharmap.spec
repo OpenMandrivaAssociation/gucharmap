@@ -9,8 +9,8 @@
 
 Summary:	A Unicode character map and font viewer
 Name:		gucharmap
-Version:	3.6.1
-Release:	8
+Version:	3.14.1
+Release:	1
 License:	GPLv2+
 Group:		Publishing
 Url:		http://gucharmap.sourceforge.net/
@@ -20,7 +20,6 @@ BuildRequires:	intltool
 BuildRequires:	itstool
 BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(gconf-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gtk+-3.0)
@@ -60,11 +59,9 @@ applications which will use gucharmap.
 %setup -q
 
 %build
-%configure2_5x \
-	--disable-static \
+%configure \
 	--with-gtk=3.0 \
-	--enable-introspection \
-	--disable-scrollkeeper 
+	--enable-introspection
 
 %make LIBS='-lgmodule-2.0'
 
@@ -77,6 +74,7 @@ applications which will use gucharmap.
 %{_bindir}/*
 %{_datadir}/glib-2.0/schemas/
 %{_datadir}/applications/*
+%{_datadir}/appdata/gucharmap.appdata.xml
 
 %files -n %{libname}
 %{_libdir}/libgucharmap_%{api}.so.%{major}*
