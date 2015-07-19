@@ -10,7 +10,7 @@
 Summary:	A Unicode character map and font viewer
 Name:		gucharmap
 Version:	 3.16.1
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Publishing
 Url:		http://gucharmap.sourceforge.net/
