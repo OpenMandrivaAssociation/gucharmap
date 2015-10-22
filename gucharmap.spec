@@ -7,10 +7,12 @@
 %define girname	%mklibname %{name}-gir %{gimajor}
 %define devname	%mklibname -d %{name}
 
+%define _disable_rebuild_configure 1
+
 Summary:	A Unicode character map and font viewer
 Name:		gucharmap
-Version:	 3.18.1
-Release:	4
+Version:	3.18.1
+Release:	1
 License:	GPLv2+
 Group:		Publishing
 Url:		http://gucharmap.sourceforge.net/
@@ -19,7 +21,6 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gucharmap/%{url_ver}/%{name}-%{v
 BuildRequires:	intltool
 BuildRequires:	itstool
 BuildRequires:	xsltproc
-BuildRequires:	appdata-tools
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gnome-doc-utils)
