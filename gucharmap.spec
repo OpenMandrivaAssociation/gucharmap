@@ -19,14 +19,17 @@ Url:		http://gucharmap.sourceforge.net/
 Source0:	https://gitlab.gnome.org/GNOME/gucharmap/-/archive/%{version}/%{name}-%{version}.tar.bz2
 #Source0:	http://ftp.gnome.org/pub/GNOME/sources/gucharmap/%{url_ver}/%{name}-%{version}.tar.xz
 
-BuildRequires:  meson
-BuildRequires:	intltool
-BuildRequires:	itstool
-BuildRequires:	xsltproc
-BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gnome-doc-utils)
-BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires: meson
+BuildRequires: intltool
+BuildRequires: itstool
+BuildRequires: xsltproc
+BuildRequires: pkgconfig(gobject-introspection-1.0)
+BuildRequires: pkgconfig(glib-2.0)
+BuildRequires: pkgconfig(gnome-doc-utils)
+BuildRequires: pkgconfig(gtk+-3.0)
+BuildRequires: gtk-doc
+BuildRequires: scrollkeeper
+BuildRequires: unicode-ucd
 
 %description
 gucharmap is a Unicode/ISO 10646 character map and font viewer. It
