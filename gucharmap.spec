@@ -11,13 +11,15 @@
 
 Summary:	A Unicode character map and font viewer
 Name:		gucharmap
-Version:	3.18.2
-Release:	2
+Version:	13.0.0
+Release:	1
 License:	GPLv2+
 Group:		Publishing
 Url:		http://gucharmap.sourceforge.net/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gucharmap/%{url_ver}/%{name}-%{version}.tar.xz
+Source0:	https://gitlab.gnome.org/GNOME/gucharmap/-/archive/%{version}/%{name}-%{version}.tar.bz2
+#Source0:	http://ftp.gnome.org/pub/GNOME/sources/gucharmap/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:  meson
 BuildRequires:	intltool
 BuildRequires:	itstool
 BuildRequires:	xsltproc
@@ -61,14 +63,14 @@ applications which will use gucharmap.
 %setup -q
 
 %build
-%configure \
-	--with-gtk=3.0 \
-	--enable-introspection
+%meson -D ucd_path=%{_datadir}/unicode/ucd \
+       -D vapi=false
+%meson_build
 
-%make LIBS='-lgmodule-2.0'
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 %find_lang %{name} --with-gnome
 
 %files -f %{name}.lang
