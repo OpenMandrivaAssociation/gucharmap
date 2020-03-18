@@ -29,7 +29,7 @@ BuildRequires: pkgconfig(gnome-doc-utils)
 BuildRequires: pkgconfig(gtk+-3.0)
 BuildRequires: gtk-doc
 BuildRequires: scrollkeeper
-BuildRequires: unicode-ucd
+#BuildRequires: unicode-ucd
 
 %description
 gucharmap is a Unicode/ISO 10646 character map and font viewer. It
