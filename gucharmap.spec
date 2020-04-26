@@ -27,6 +27,7 @@ BuildRequires: pkgconfig(gobject-introspection-1.0)
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(gnome-doc-utils)
 BuildRequires: pkgconfig(gtk+-3.0)
+BuildRequires: pkgconfig(vapigen)
 BuildRequires: gtk-doc
 BuildRequires: scrollkeeper
 BuildRequires: unicode-ucd
