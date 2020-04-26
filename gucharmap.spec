@@ -30,6 +30,7 @@ BuildRequires: pkgconfig(gtk+-3.0)
 BuildRequires: gtk-doc
 BuildRequires: scrollkeeper
 BuildRequires: unicode-ucd
+BuildRequires: perl(Env)
 
 %description
 gucharmap is a Unicode/ISO 10646 character map and font viewer. It
