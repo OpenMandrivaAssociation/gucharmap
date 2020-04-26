@@ -11,7 +11,7 @@
 
 Summary:	A Unicode character map and font viewer
 Name:		gucharmap
-Version:	13.0.0
+Version:	13.0.2
 Release:	1
 License:	GPLv2+
 Group:		Publishing
@@ -66,8 +66,9 @@ applications which will use gucharmap.
 %setup -q
 
 %build
-%meson -D ucd_path=%{_datadir}/unicode/ucd \
+%meson \
        -D vapi=false
+#       -D ucd_path=%{_datadir}/unicode/ucd \
 %meson_build
 
 %meson_build
