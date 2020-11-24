@@ -71,8 +71,10 @@ applications which will use gucharmap.
 %setup -q
 
 %build
-%meson -D ucd_path=%{_datadir}/unicode/ucd/UCD-%{uni_ver}
-#       -D vapi=false 
+%meson -D ucd_path=%{_datadir}/unicode/ucd/UCD-%{uni_ver} \
+       -D vapi=true \
+       -D gtk3=true \
+       -D gir=true
 
 %meson_build
 
@@ -81,11 +83,11 @@ applications which will use gucharmap.
 %find_lang %{name} --with-gnome
 
 %files -f %{name}.lang
-%doc README TODO
+%doc README.md TODO
 %{_bindir}/*
 %{_datadir}/glib-2.0/schemas/
 %{_datadir}/applications/*
-%{_datadir}/appdata/gucharmap.appdata.xml
+#{_datadir}/appdata/gucharmap.appdata.xml
 
 %files -n %{libname}
 %{_libdir}/libgucharmap_%{api}.so.%{major}*
