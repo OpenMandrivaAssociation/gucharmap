@@ -9,6 +9,9 @@
 
 %define _disable_rebuild_configure 1
 
+# Make sure, that this version is exacly at this same number as in unicode-ucd!
+%define uni_ver 13.0.0
+
 Summary:	A Unicode character map and font viewer
 Name:		gucharmap
 Version:	13.0.4
@@ -68,7 +71,7 @@ applications which will use gucharmap.
 %setup -q
 
 %build
-%meson -D ucd_path=%{_datadir}/unicode/ucd
+%meson -D ucd_path=%{_datadir}/unicode/ucd/UCD-%{uni_ver}/
 #       -D vapi=false 
 
 %meson_build
