@@ -83,8 +83,8 @@ applications which will use gucharmap.
 %find_lang %{name} --with-gnome
 
 %files -f %{name}.lang
-%doc README.md TODO %{_datadir}/gtk-doc/html/gucharmap-%{gimajor}/*
-
+%doc README.md TODO
+%{_datadir}/gtk-doc/html/gucharmap-%{gimajor}/*
 %{_bindir}/*
 %{_datadir}/glib-2.0/schemas/
 %{_datadir}/applications/*
