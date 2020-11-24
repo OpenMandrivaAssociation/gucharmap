@@ -9,22 +9,32 @@
 
 %define _disable_rebuild_configure 1
 
+# Make sure, that this version is exacly at this same number as in unicode-ucd!
+%define uni_ver 13.0.0
+
 Summary:	A Unicode character map and font viewer
 Name:		gucharmap
-Version:	3.18.2
-Release:	3
+Version:	13.0.4
+Release:	1
 License:	GPLv2+
 Group:		Publishing
 Url:		http://gucharmap.sourceforge.net/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gucharmap/%{url_ver}/%{name}-%{version}.tar.xz
+Source0:	https://gitlab.gnome.org/GNOME/gucharmap/-/archive/%{version}/%{name}-%{version}.tar.bz2
+#Source0:	http://ftp.gnome.org/pub/GNOME/sources/gucharmap/%{url_ver}/%{name}-%{version}.tar.xz
 
-BuildRequires:	intltool
-BuildRequires:	itstool
-BuildRequires:	xsltproc
-BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gnome-doc-utils)
-BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires: meson
+BuildRequires: intltool
+BuildRequires: itstool
+BuildRequires: xsltproc
+BuildRequires: pkgconfig(gobject-introspection-1.0)
+BuildRequires: pkgconfig(glib-2.0)
+BuildRequires: pkgconfig(gnome-doc-utils)
+BuildRequires: pkgconfig(gtk+-3.0)
+BuildRequires: pkgconfig(vapigen)
+BuildRequires: gtk-doc
+BuildRequires: scrollkeeper
+BuildRequires: unicode-ucd
+BuildRequires: perl(Env)
 
 %description
 gucharmap is a Unicode/ISO 10646 character map and font viewer. It
@@ -61,22 +71,24 @@ applications which will use gucharmap.
 %setup -q
 
 %build
-%configure \
-	--with-gtk=3.0 \
-	--enable-introspection
+%meson -D ucd_path=%{_datadir}/unicode/ucd/UCD-%{uni_ver} \
+       -D vapi=true \
+       -D gtk3=true \
+       -D gir=true
 
-%make LIBS='-lgmodule-2.0'
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 %find_lang %{name} --with-gnome
 
 %files -f %{name}.lang
-%doc README TODO
+%doc README.md TODO
+%{_datadir}/gtk-doc/html/gucharmap-%{gimajor}/*
 %{_bindir}/*
 %{_datadir}/glib-2.0/schemas/
 %{_datadir}/applications/*
-%{_datadir}/appdata/gucharmap.appdata.xml
+%{_datadir}/metainfo/gucharmap.metainfo.xml
 
 %files -n %{libname}
 %{_libdir}/libgucharmap_%{api}.so.%{major}*
@@ -89,3 +101,5 @@ applications which will use gucharmap.
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_datadir}/gir-1.0/Gucharmap-%{gimajor}.gir
+%{_datadir}/vala/vapi/gucharmap-%{gimajor}.deps
+%{_datadir}/vala/vapi/gucharmap-%{gimajor}.vapi
