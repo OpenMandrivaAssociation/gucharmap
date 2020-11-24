@@ -83,11 +83,12 @@ applications which will use gucharmap.
 %find_lang %{name} --with-gnome
 
 %files -f %{name}.lang
-%doc README.md TODO
+%doc README.md TODO %{_datadir}/gtk-doc/html/gucharmap-%{gimajor}/*
+
 %{_bindir}/*
 %{_datadir}/glib-2.0/schemas/
 %{_datadir}/applications/*
-#{_datadir}/appdata/gucharmap.appdata.xml
+%{_datadir}/metainfo/gucharmap.metainfo.xml
 
 %files -n %{libname}
 %{_libdir}/libgucharmap_%{api}.so.%{major}*
@@ -100,3 +101,5 @@ applications which will use gucharmap.
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_datadir}/gir-1.0/Gucharmap-%{gimajor}.gir
+%{_datadir}/vala/vapi/gucharmap-%{gimajor}.deps
+%{_datadir}/vala/vapi/gucharmap-%{gimajor}.vapi
