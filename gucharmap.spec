@@ -18,7 +18,7 @@ Version:	13.0.8
 Release:	2
 License:	GPLv2+
 Group:		Publishing
-Url:		http://gucharmap.sourceforge.net/
+Url:		https://gucharmap.sourceforge.net/
 Source0:	https://gitlab.gnome.org/GNOME/gucharmap/-/archive/%{version}/%{name}-%{version}.tar.bz2
 #Source0:	http://ftp.gnome.org/pub/GNOME/sources/gucharmap/%{url_ver}/%{name}-%{version}.tar.xz
 
