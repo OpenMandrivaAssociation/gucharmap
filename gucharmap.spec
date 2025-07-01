@@ -34,6 +34,7 @@ BuildRequires: pkgconfig(vapigen)
 BuildRequires: gtk-doc
 BuildRequires: scrollkeeper
 BuildRequires: unicode-ucd
+BuildRequires: unicode-ucd-unihan
 BuildRequires: perl(Env)
 
 %description
