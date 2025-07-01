@@ -71,7 +71,7 @@ applications which will use gucharmap.
 %setup -q
 
 %build
-%meson -D ucd_path=%{_datadir}/unicode/ucd/UCD-%{uni_ver} \
+%meson -D ucd_path=%{_datadir}/unicode/ucd/
        -D vapi=true \
        -D gtk3=true \
        -D gir=true
