@@ -10,12 +10,12 @@
 %define _disable_rebuild_configure 1
 
 # Make sure, that this version is exacly at this same number as in unicode-ucd!
-%define uni_ver 13.0.0
+%define uni_ver 16.0.0
 
 Summary:	A Unicode character map and font viewer
 Name:		gucharmap
-Version:	13.0.8
-Release:	2
+Version:	16.0.2
+Release:	1
 License:	GPLv2+
 Group:		Publishing
 Url:		https://gucharmap.sourceforge.net/
@@ -34,6 +34,7 @@ BuildRequires: pkgconfig(vapigen)
 BuildRequires: gtk-doc
 BuildRequires: scrollkeeper
 BuildRequires: unicode-ucd
+BuildRequires: unicode-ucd-unihan
 BuildRequires: perl(Env)
 
 %description
@@ -71,10 +72,10 @@ applications which will use gucharmap.
 %setup -q
 
 %build
-%meson -D ucd_path=%{_datadir}/unicode/ucd/UCD-%{uni_ver} \
-       -D vapi=true \
-       -D gtk3=true \
-       -D gir=true
+%meson -Ducd_path=%{_datadir}/unicode/ucd/ \
+       -Dvapi=true \
+       -Dgtk3=true \
+       -Dgir=true
 
 %meson_build
 
