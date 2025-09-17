@@ -10,11 +10,11 @@
 %define _disable_rebuild_configure 1
 
 # Make sure, that this version is exacly at this same number as in unicode-ucd!
-%define uni_ver 16.0.0
+%define uni_ver 17.0.0
 
 Summary:	A Unicode character map and font viewer
 Name:		gucharmap
-Version:	16.0.2
+Version:	17.0.0
 Release:	1
 License:	GPLv2+
 Group:		Publishing
