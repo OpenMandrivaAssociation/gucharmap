@@ -15,7 +15,7 @@
 Summary:	A Unicode character map and font viewer
 Name:		gucharmap
 Version:	18.0.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Publishing
 Url:		https://gucharmap.sourceforge.net/
